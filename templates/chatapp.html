@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>My Chat App</title>
+    <title>My super Python Chat App</title>
     
 
     <!-- Bootstrap -->
@@ -29,7 +29,7 @@
   <body>
    <div class = "container-fluid">
       <div class = "well text-center">
-        <h4>My Chat App</h4>
+        <h4>My super Python Chat App</h4>
       </div>
       <div class="col-sm-8">
       <div class="no_message">
@@ -38,7 +38,7 @@
       </div>
     </div>
       <div class="col-sm-4">
-        <form actions="" method="POST">
+        <form action="" method="POST">
           <b> Type Your Message Below Span. <span class="glyphicon glyphicon-arrow-down"></span></b>
           <hr>
           <form>
@@ -72,7 +72,7 @@
      var form = $('form').on('submit', function( e ){
       e.preventDefault()
       var user_name = $( 'input.username' ).val()
-      var message = $( 'message' ).val()
+      var message = $( 'input.message' ).val()
       socket.emit( 'my event' ,{
         user : user_name,
         msg  : message
@@ -82,11 +82,11 @@
      $( 'input.message' ).val( '' ).focus()
      // capture message
      socket.on( 'my response', function(msg){
+        console.log( msg )
       if(typeof msg.user !== 'undefined' ){
         $( h1 ).remove()
         $( 'div.msg-wrapper' ).append( '<div class="msgbbl"><b>'+msg.user+'</b> '+msg.msg+'</div> ')
       }
-      console.log( msg )
      })
    </script>
   </body>
